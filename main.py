@@ -20,26 +20,40 @@ def general_weighted_average(e):
     art = float(document.getElementById('art').value)
     SocSci = float(document.getElementById('SocSci').value)
 
+    #Multiplies the subjects' grades by the hours they all take in a week (their importance), then adds them together. 
     weighted_sum = (science * units_subject[0] + 
-           math * units_subject[0] + 
-           english * units_subject[0] + 
-           filipino * units_subject[1] + 
-           ict * units_subject[2] + 
-           pe * units_subject[3] +
-           art * units_subject[3] +
-           SocSci * units_subject[1])
+        math * units_subject[0] + 
+        english * units_subject[0] + 
+        filipino * units_subject[1] + 
+        ict * units_subject[2] + 
+        pe * units_subject[3] +
+        art * units_subject[3] +
+        SocSci * units_subject[1])
+    
+    #Multiplies each units' hours (importance) by how many subjects take that much time (importance), then adds them all together
     total_units = (units_subject[0] * 3) + (units_subject[1] * 2) + units_subject[2] + (units_subject[3] * 2)
+
+    #Calculates for the general weighted average by dividing the weighted sum by the total units
     gwa = weighted_sum / total_units
     
+    #Couples the grades to their subjects into integer form
     summary = f"""{subjects[0]}: {science:.0f}
-{subjects[1]}: {math:.0f}
-{subjects[2]}: {english:.0f}
-{subjects[3]}: {filipino:.0f}
-{subjects[4]}: {ict:.0f}
-{subjects[5]}: {pe:.0f}
-{subjects[6]}: {art:.0f}
-{subjects[7]}: {SocSci:.0f}
-    """
+        {subjects[1]}: {math:.0f}
+        {subjects[2]}: {english:.0f}
+        {subjects[3]}: {filipino:.0f}
+        {subjects[4]}: {ict:.0f}
+        {subjects[5]}: {pe:.0f}
+        {subjects[6]}: {art:.0f}
+        {subjects[7]}: {SocSci:.0f}
+            """
+
+    #Displays the final report
     display(f'Name: {first_name} {last_name}', target="student_info")
     display(summary, target='summary')
     display(f'Your general weighted average is {gwa:.2f}', target='output', )
+
+    #Checks whether average is failing/passing
+    if gwa >= 75:
+        display('✅ PASSED', target='stamp_pass')
+    else:
+        display('❌ FAILED', target='stamp_fail')
