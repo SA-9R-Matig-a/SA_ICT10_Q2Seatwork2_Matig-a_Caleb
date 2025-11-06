@@ -1,16 +1,19 @@
 from pyscript import display, document # type: ignore
 
 
-def general_weighted_average(e):
+def general_weighted_average(e): #Clears previous results
     document.getElementById('student_info').innerHTML = ' '
     document.getElementById('summary').innerHTML = ' '
     document.getElementById('output').innerHTML = ' '
+    document.getElementById('stamp_pass').innerHTML = ' '
+    document.getElementById('stamp_fail').innerHTML = ' '
     subjects = ['Science', 'Math', 'English', 'Filipino', 'ICT', 'PE', 'Art', 'SocSciPhi']
     units_subject = (5, 3, 2, 1)
 
     first_name = document.getElementById('first_name').value
     last_name = document.getElementById('last_name').value
 
+    #Gets the value from HTML and converts into float
     science = float(document.getElementById('science').value)
     math = float(document.getElementById('math').value)
     english = float(document.getElementById('english').value)
@@ -36,8 +39,9 @@ def general_weighted_average(e):
     #Calculates for the general weighted average by dividing the weighted sum by the total units
     gwa = weighted_sum / total_units
     
-    #Couples the grades to their subjects into integer form
-    summary = f"""{subjects[0]}: {science:.0f}
+    #Removes all decimal places from the numbers
+    summary = f"""
+        {subjects[0]}: {science:.0f}
         {subjects[1]}: {math:.0f}
         {subjects[2]}: {english:.0f}
         {subjects[3]}: {filipino:.0f}
