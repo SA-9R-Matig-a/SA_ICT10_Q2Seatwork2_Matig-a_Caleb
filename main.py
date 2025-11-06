@@ -7,7 +7,7 @@ def general_weighted_average(e): #Clears previous results
     document.getElementById('output').innerHTML = ' '
     document.getElementById('stamp_pass').innerHTML = ' '
     document.getElementById('stamp_fail').innerHTML = ' '
-    subjects = ['Science', 'Math', 'English', 'Filipino', 'ICT', 'PE', 'Art', 'SocSci']
+    subjects = ['Science', 'Math', 'English', 'Filipino', 'ICT', 'PE', 'Art', 'Social Science']
     units_subject = (5, 3, 2, 1)
 
     first_name = document.getElementById('first_name').value
